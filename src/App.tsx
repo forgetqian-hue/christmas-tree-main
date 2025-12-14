@@ -43,7 +43,7 @@ const CONFIG = {
   },
   counts: {
     foliage: 15000,
-    ornaments: 100,   // 拍立得照片数量
+    ornaments: 50,   // 拍立得照片数量
     elements: 200,    // 圣诞元素数量
     lights: 400       // 彩灯数量
   },
@@ -141,8 +141,8 @@ const PhotoOrnaments = ({ state }: { state: 'CHAOS' | 'FORMED' }) => {
       const theta = Math.random() * Math.PI * 2;
       const targetPos = new THREE.Vector3(currentRadius * Math.cos(theta), y, currentRadius * Math.sin(theta));
 
-      const isBig = Math.random() < 0.2;
-      const baseScale = isBig ? 2.2 : 0.8 + Math.random() * 0.6;
+      const isBig = Math.random() < 0.5;
+      const baseScale = isBig ? 2.5 : 1.0 + Math.random() * 0.8;
       const weight = 0.8 + Math.random() * 1.2;
       const borderColor = CONFIG.colors.borders[Math.floor(Math.random() * CONFIG.colors.borders.length)];
 
