@@ -20,8 +20,8 @@ import { GestureRecognizer, FilesetResolver, DrawingUtils } from "@mediapipe/tas
 const TOTAL_NUMBERED_PHOTOS = 20;
 // 修改：将 top.jpg 加入到数组开头
 const bodyPhotoPaths = [
-  '/photos/top.jpg',
-  ...Array.from({ length: TOTAL_NUMBERED_PHOTOS }, (_, i) => `/photos/${i + 1}.jpg`)
+  'photos/top.jpg',
+  ...Array.from({ length: TOTAL_NUMBERED_PHOTOS }, (_, i) => `photos/${i + 1}.jpg`)
 ];
 
 // --- 视觉配置 ---
@@ -42,10 +42,10 @@ const CONFIG = {
     candyColors: ['#FF0000', '#FFFFFF']
   },
   counts: {
-    foliage: 15000,
+    foliage: 25000,
     ornaments: 50,   // 拍立得照片数量
-    elements: 200,    // 圣诞元素数量
-    lights: 400       // 彩灯数量
+    elements: 400,    // 圣诞元素数量
+    lights: 600       // 彩灯数量
   },
   tree: { height: 22, radius: 9 }, // 树体尺寸
   photos: {
@@ -129,8 +129,8 @@ const PhotoOrnaments = ({ state }: { state: 'CHAOS' | 'FORMED' }) => {
   const count = CONFIG.counts.ornaments;
   const groupRef = useRef<THREE.Group>(null);
 
-  const borderGeometry = useMemo(() => new THREE.PlaneGeometry(1.2, 1.5), []);
-  const photoGeometry = useMemo(() => new THREE.PlaneGeometry(1, 1), []);
+  const borderGeometry = useMemo(() => new THREE.PlaneGeometry(1.5, 1.8), []);
+  const photoGeometry = useMemo(() => new THREE.PlaneGeometry(1.5, 1.5), []);
 
   const data = useMemo(() => {
     return new Array(count).fill(0).map((_, i) => {
@@ -219,7 +219,7 @@ const PhotoOrnaments = ({ state }: { state: 'CHAOS' | 'FORMED' }) => {
               <meshStandardMaterial
                 map={textures[obj.textureIndex]}
                 roughness={0.5} metalness={0}
-                emissive={CONFIG.colors.white} emissiveMap={textures[obj.textureIndex]} emissiveIntensity={1.0}
+                emissive={CONFIG.colors.white} emissiveMap={textures[obj.textureIndex]} emissiveIntensity={1.5}
                 side={THREE.FrontSide}
               />
             </mesh>
